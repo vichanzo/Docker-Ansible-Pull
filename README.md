@@ -42,3 +42,10 @@ contents of containers.yml:
        - '/home/opc/data/yt:/downloads'
       image: alexta69/metube
 ```
+
+## Running ansible-pull
+On a different system you can run the local.yml playbook
+
+```
+sudo ansible-pull -U https://github.com/vichanzo/Docker-Ansible-Pull.git
+```
