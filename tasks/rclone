@@ -1,3 +1,31 @@
+---
+ - name: VKC install docker rclone
+   hosts: localhost
+   Connection: local
+   become: yes
+   tasks:
+   - name: Install rclone
+     docker_container:
+      name: rclone
+      ports:
+       - 5572:5572
+      command: rcd --rc-web-gui --rc-addr :5572 --rc-user jsmith --rc-pass mypassword
+      env:
+       PUID: "1000"
+       PGID: "1000"
+       TZ: "America/Los_Angeles"
+      restart_policy: unless-stopped
+      volumes:
+       - 'home/opc/rclone_rclone:/config/rclone' 
+      image: rclone/rclone
+
+
+
+
+
+
+
+
 image: rclone/rclone
     container_name: rclone_rclone
     restart: always
